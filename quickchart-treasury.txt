@@ -1,0 +1,75 @@
+{
+  type: 'line',
+  data: {
+      datasets: [{
+        backgroundColor: 'rgba(0,191,255, 0.5)',
+        borderColor: 'rgb(0,191,255)'
+      }]
+    },
+  options: {
+    plugins: {
+      backgroundImageUrl: 'https://raw.githubusercontent.com/dreadedhamish/netlify-url-shortener/master/ICY-Treasury-bg.png',
+      googleSheets: {
+        //sheetUrl: 'https://docs.google.com/spreadsheets/d/1fnwlSFEcEl__CK90kAqKww9T_bWQ8KhjG2hZMTbWjH0/edit?usp=sharing',
+        //docId: '1fnwlSFEcEl__CK90kAqKww9T_bWQ8KhjG2hZMTbWjH0',
+        // https://docs.google.com/spreadsheets/d/1fnwlSFEcEl__CK90kAqKww9T_bWQ8KhjG2hZMTbWjH0/edit?usp=sharing
+        docId: '1fnwlSFEcEl__CK90kAqKww9T_bWQ8KhjG2hZMTbWjH0',
+        sheet: 'ICYRaw',
+        labelColumn: 'lastUpdated',
+        dataColumns: ['distributedETH'],
+      }
+      },
+    layout: {
+            padding: {
+                left: 10,
+                right: 20,
+                top: 80,
+                bottom: 10
+            }
+        },
+    legend: {
+            display: false,
+        }, 
+    scales: {
+            xAxes: [{
+                type: 'time',
+                time: {
+                  parser: 'x',
+                  unit: 'day',
+                },
+                scaleLabel: {
+                  display: false,
+                  labelString: "Date"
+                },
+                ticks: {
+                    fontFamily: 'Noto Sans',
+                    fontSize: 8,
+                    fontColor: '#FFFFFF',
+                    major: {
+                        enabled: true
+                    },
+                }
+              }],
+            yAxes: [
+                {
+                    ticks: {
+                        beginAtZero: true,
+                        stepSize: 10000,
+                        fontFamily: 'Noto Sans',
+                        //fontSize: 8,
+                        fontColor: '#FFFFFF',
+                        callback: function(value, index, values) {
+                            return value / 1000 + 'K';
+                        },
+                    },
+                    scaleLabel: {
+                        display: true,
+                        labelString: '$USD',
+                        fontColor: '#FFFFFF',
+                        fontStyle: 'bold',
+                    },
+                },
+            ],  
+        }, 
+  }
+}
