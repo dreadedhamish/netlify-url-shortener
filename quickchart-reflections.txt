@@ -1,0 +1,63 @@
+{
+    type: 'line',
+    data: {
+        datasets: [{
+        backgroundColor: 'rgba(0,191,255, 0.5)',
+        borderColor: 'rgb(0,191,255)'
+        }]
+    },
+    options: {
+        plugins: {
+            backgroundImageUrl: 'https://raw.githubusercontent.com/dreadedhamish/netlify-url-shortener/master/ICY-Reflections-total-bg.png',
+            googleSheets: {
+                docId: '1fnwlSFEcEl__CK90kAqKww9T_bWQ8KhjG2hZMTbWjH0',
+                sheet: 'ICYRaw',
+                labelColumn: 'lastUpdated',
+                dataColumns: ['distributedETH'],
+                rows: {
+                  limit: 50, // last 5 rows
+                  //offset: 1, // omit last row
+                }
+            }
+        },
+    layout: {
+        padding: {
+            left: 20,
+            right: 20,
+            top: 80,
+            bottom: 10
+        }
+    },
+    legend: {
+        display: false,
+    }, 
+    scales: {
+        xAxes: [{
+            type: 'time',
+            time: {
+                parser: 'x',
+                unit: 'day',
+            },
+            ticks: {
+                fontFamily: 'Noto Sans',
+                fontSize: 8,
+                fontColor: '#FFFFFF',
+            }
+        }],
+        yAxes: [{
+            ticks: {
+                beginAtZero: true,
+                fontFamily: 'Noto Sans',
+                //fontSize: 8,
+                fontColor: '#FFFFFF',
+            },
+            scaleLabel: {
+                display: true,
+                labelString: '$ETH',
+                fontColor: '#FFFFFF',
+                fontStyle: 'bold',
+            }
+        }],  
+        }
+    }
+}
